@@ -1,21 +1,25 @@
 ---
 interface Props {
-	title: string;
-	body: string;
+	imageCharacter: string
+	name: string;
+	status: string;
 	href: string;
+	species: string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, name, status, imageCharacter, species} = Astro.props;
+import { Image } from "astro:assets"
 ---
 
-<li class="link-card">
+<li class="link-card max-w-[350px] m-auto">
 	<a href={href}>
+		<Image height={300} width={300} src={imageCharacter} alt={`Pictor of the ${name}`} />
 		<h2>
-			{title}
+			{name}
 			<span>&rarr;</span>
 		</h2>
 		<p>
-			{body}
+			{status}
 		</p>
 	</a>
 </li>
