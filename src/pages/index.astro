@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import WrapperLayot from '../layouts/WrapperLayot.astro';
-
+import Pagination from '../components/Pagination.tsx';
+import {ViewTransitions} from 'astro:transitions';
+import { paginationUrl, paginationNumber } from '../store/paginationStore';
 export interface Character {
   id:       number;
   name:     string;
@@ -22,10 +24,10 @@ export interface Location {
   name: string;
   url:  string;
 }
-
-
-const response = await fetch('https://rickandmortyapi.com/api/character');
+const response = await fetch("https://rickandmortyapi.com/api/character");
 const data = await response.json();
+import { fade } from 'astro:transitions';
+
 const dataResults = data.results;
 ---
 
@@ -34,15 +36,20 @@ const dataResults = data.results;
     <ul class="flex flex-wrap gap-y-4">
 		  {dataResults.map((character: Character) => (
 		  	<Card
+          id={character.id}
           imageCharacter={character.image}
 		  		href={character.url}
 		  		name={character.name}
 		  		status={character.status}
           species={character.species}
           client:visible
+          transition:name={character.name} 
+          transition:animate={fade({ duration: '0.4s' })} 
 		  	/>
 		  ))}
+      <ViewTransitions/>
     </ul>
+    <Pagination url='gola' client:load/>
 	</WrapperLayot>
 </Layout>
 
