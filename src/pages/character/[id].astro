@@ -12,18 +12,29 @@ import { fade } from 'astro:transitions';
 ---
 <Layout title={dataResults.name}>
   <WrapperLayot>
-    <section class="">
-      <Image transition:name={dataResults.name} transition:animate={fade({ duration: '0.4s' })} height={300} width={300} src={dataResults.image} alt={`Pictor of the ${dataResults.name}`} />
-      <div class="text-white text-xl">
-        <h2>
-          {dataResults.name}
-        </h2>
-        <p>
-          Status: {dataResults.status !== "unknown" ? (dataResults.status === "Alive" ? "Alive 🟢" : "Dead 🔴") : "Unkown 🟡"}		
-        </p>
-        <p>
-          Species: {dataResults.species}
-        </p>
+    <section class="flex justify-center">
+      <div>
+        <Image transition:name={dataResults.name} transition:animate={fade({ duration: '0.4s' })} height={300} width={300} src={dataResults.image} alt={`Pictor of the ${dataResults.name}`} />
+        <div class="text-white text-xl">
+          <h2>
+            {dataResults.name}
+          </h2>
+          <p>
+            Status: {dataResults.status !== "unknown" ? (dataResults.status === "Alive" ? "Alive 🟢" : "Dead 🔴") : "Unkown 🟡"}		
+          </p>
+          <p>
+            Species: {dataResults.species}
+          </p>
+          <p>
+            Gender: {dataResults.gender}
+          </p>
+          <p>
+            Origin: {dataResults.origin.name}
+          </p>
+          <p>
+            Location: {dataResults.location.name}
+          </p>
+        </div>
       </div>
     </section>
   </WrapperLayot>
