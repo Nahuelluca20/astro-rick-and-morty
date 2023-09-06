@@ -9,11 +9,11 @@ import WrapperLayot from '../../layouts/WrapperLayot.astro';
 import { fade, slide } from 'astro:transitions';
 
 ---
-<Layout title={dataResults.name}>
+<Layout transition:name={dataResults.name} transition:animate={fade({ duration: '0.4s' })} title={dataResults.name}>
   <WrapperLayot>
     <section class="flex justify-center">
       <div>
-        <Image transition:name={dataResults.name} transition:animate={slide({ duration: '0.4s' })} height={300} width={300} src={dataResults.image} alt={`Pictor of the ${dataResults.name}`} />
+        <Image height={300} width={300} src={dataResults.image} alt={`Pictor of the ${dataResults.name}`} />
         <div class="text-white text-xl">
           <h2>
             {dataResults.name}
