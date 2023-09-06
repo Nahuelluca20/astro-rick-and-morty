@@ -9,14 +9,12 @@ interface Props {
 }
 
 const { href, name, status, imageCharacter, species, id} = Astro.props;
-import {ViewTransitions} from 'astro:transitions';
 import { Image } from "astro:assets"
 ---
 
 <li class="link-card max-w-[350px] m-auto">
 	<a href={`/character/${id}`}>
 		<Image height={300} width={300} src={imageCharacter} alt={`Pictor of the ${name}`} />
-		<ViewTransitions/>
 		<h2>
 			{name}
 			<span>&rarr;</span>

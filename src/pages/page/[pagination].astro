@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import WrapperLayot from '../../layouts/WrapperLayot.astro';
 import Card from '../../components/Card.astro';
-import { ViewTransitions } from 'astro:transitions';
 import Pagination from '../../components/Pagination';
 import type { Character } from '../../types/CharacterType';
 import { fade } from 'astro:transitions';
@@ -29,7 +28,6 @@ const dataResults = data.results;
           transition:animate={fade({ duration: '0.4s' })} 
 		  	/>
 		  ))}
-      <ViewTransitions/>
     </ul>
     <Pagination client:load/>
 	</WrapperLayot>

@@ -3,18 +3,17 @@ const { id } = Astro.params;
 const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
 const data = await response.json();
 const dataResults = await data;
-import { ViewTransitions } from 'astro:transitions';
 import { Image } from "astro:assets"
 import Layout from '../../layouts/Layout.astro';
 import WrapperLayot from '../../layouts/WrapperLayot.astro';
-import { fade } from 'astro:transitions';
+import { fade, slide } from 'astro:transitions';
 
 ---
 <Layout title={dataResults.name}>
   <WrapperLayot>
     <section class="flex justify-center">
       <div>
-        <Image transition:name={dataResults.name} transition:animate={fade({ duration: '0.4s' })} height={300} width={300} src={dataResults.image} alt={`Pictor of the ${dataResults.name}`} />
+        <Image transition:name={dataResults.name} transition:animate={slide({ duration: '0.4s' })} height={300} width={300} src={dataResults.image} alt={`Pictor of the ${dataResults.name}`} />
         <div class="text-white text-xl">
           <h2>
             {dataResults.name}
@@ -39,4 +38,3 @@ import { fade } from 'astro:transitions';
     </section>
   </WrapperLayot>
 </Layout>
-<ViewTransitions/>
